@@ -301,7 +301,7 @@ function handleNavigation(relativeUrl, push) {
         promise
         .fail(function (e) {
             console.log(e); // eslint-disable-line no-console
-            // location.href = relativeUrl;
+            location.href = relativeUrl;
         })
     );
 }
