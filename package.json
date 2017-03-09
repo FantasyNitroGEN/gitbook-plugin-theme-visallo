@@ -2,7 +2,7 @@
   "name": "gitbook-plugin-theme-visallo",
   "description": "Default theme for GitBook",
   "main": "./index.js",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "engines": {
     "gitbook": ">=3.0.0"
   },
@@ -40,6 +40,11 @@
   ],
   "gitbook": {
     "properties": {
+      "canonicalBaseUrl": {
+        "default": "",
+        "title": "Canonical baseUrl",
+        "type": "string"
+      },
       "styles": {
         "type": "object",
         "title": "Custom Stylesheets",

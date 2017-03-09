@@ -6,6 +6,11 @@
 
 {% block head %}
     {{ super() }}
+
+    {% if config.pluginsConfig['theme-visallo'].version %}
+      <link rel="canonical" href="{{ config.pluginsConfig['theme-visallo'].canonicalBaseUrl }}/versions/{{ config.pluginsConfig['theme-visallo'].version }}/{{ file.path | replace('index.md','') | replace('README.md','') | replace('readme.md','') | replace('.md','.html')}}">
+    {% endif %}
+
     {% if page.next and page.next.path %}
     <link rel="next" href="{{ page.next.path|resolveFile }}" />
     {% endif %}
