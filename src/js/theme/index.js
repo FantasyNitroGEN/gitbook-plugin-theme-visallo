@@ -33,21 +33,17 @@ function init() {
     if ('versions' in config && 'version' in config) {
         var versions = config.versions;
         var version = config.version;
-        var usersPreferredVersion = gitbook.storage.get('version');
-        var currentVersion = (versions.indexOf(usersPreferredVersion) >= 0) ?
-            usersPreferredVersion : version;
         var prefixRegex = /^\/(versions\/[^\/]+\/)?/;
         toolbar.createButton({
-            text: 'Version: ' + currentVersion,
+            text: 'Version: ' + version,
             position: 'right',
             className: 'version-selector',
-            dropdown: versions.map(function(version) {
+            dropdown: versions.map(function(v) {
                 return {
-                    text: version,
-                    className: version === currentVersion ? 'disabled' : '',
+                    text: v,
+                    className: version === v ? 'disabled' : '',
                     onClick: function() {
-                        gitbook.storage.set('version', version);
-                        location.href = '/versions/' + version + '/' +
+                        location.href = '/versions/' + v + '/' +
                             location.pathname.replace(prefixRegex, '');
                     }
                 };
