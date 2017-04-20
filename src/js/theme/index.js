@@ -33,7 +33,10 @@ function init() {
     if ('versions' in config && 'version' in config) {
         var versions = config.versions;
         var version = config.version;
-        var prefixRegex = /^\/(versions\/[^\/]+\/)?/;
+
+        var pathToVersions = (config.pathToVersions || 'versions/').replace(/^\//, '');
+        var prefixRegex = new RegExp('^/(' + pathToVersions + '[^/]+/)?');
+
         toolbar.createButton({
             text: 'Version: ' + version,
             position: 'right',
@@ -43,7 +46,7 @@ function init() {
                     text: v,
                     className: version === v ? 'disabled' : '',
                     onClick: function() {
-                        location.href = '/versions/' + v + '/' +
+                        location.href = '/' + pathToVersions + v + '/' +
                             location.pathname.replace(prefixRegex, '');
                     }
                 };
